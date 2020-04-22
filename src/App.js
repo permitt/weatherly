@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { SearchBar } from './components/SearchBar';
+import { Table } from './components/Table';
+import { Chart } from './components/Chart';
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container spacing={1}>
+      <Grid container item xs={12} spacing={3}>
+        <header className="App-header">
+          <Typography>WEATHERLY</Typography>
+        </header>
+
+      </Grid>
+      <Grid container item xs={12} spacing={3}>
+
+      </Grid>
+      <Grid container item xs={12} spacing={3}>
+
+      </Grid>
+
+
+
+      <SearchBar />
+      <Table />
+      <Chart />
+    </Grid>
+
   );
 }
 
