@@ -1,34 +1,24 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header';
+
 import { SearchBar } from './components/SearchBar';
 import { Table } from './components/Table';
-import { Chart } from './components/Chart';
-import Typography from '@material-ui/core/Typography'
+import { LineChart } from './components/LineChart';
 import Grid from '@material-ui/core/Grid';
-
+import Container from '@material-ui/core/Container'
 
 function App() {
+
+
   return (
-    <Grid container spacing={1}>
-      <Grid container item xs={12} spacing={3}>
-        <header className="App-header">
-          <Typography>WEATHERLY</Typography>
-        </header>
 
-      </Grid>
-      <Grid container item xs={12} spacing={3}>
-
-      </Grid>
-      <Grid container item xs={12} spacing={3}>
-
-      </Grid>
-
-
-
+    <Container maxWidth="sm">
+      <Header />
       <SearchBar />
       <Table />
-      <Chart />
-    </Grid>
+      <LineChart />
+    </Container>
 
   );
 }
