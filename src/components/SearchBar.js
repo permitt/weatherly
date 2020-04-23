@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+
+
 
 export const SearchBar = (props) => {
     const [city, setCity] = useState('')
-    const [citiesAvailable, setCitiesAvailable] = useState([])
+    
 
     return (
-        <Grid container spacing={0}>
-            <Grid xs={11}>
-
-                <Autocomplete
-                    id="combo-box-demo"
-                    options={citiesAvailable}
-                    getOptionLabel={(option) => option}
-                    style={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} fullWidth label="Enter the city's name" variant="outlined" />}
-                />
-
+        <Grid container spacing={0} style={{paddingBottom:'35px'}}>
+        <Grid xs={2}>
+        </Grid>
+            <Grid xs={7}>
+                <TextField value={city} onChange={(e) => setCity(e.target.value)} error={props.error} style={{ width: 500 }} label="Enter the city's name" variant="outlined" />
             </Grid>
             <Grid xs={1}>
-                <Button variant="contained" size="large" color="secondary" onClick={() => { alert("HA") }}>Add</Button>
+                <Button style={{ marginTop: '8px', marginLeft:'-15px' }} variant="contained" size="medium" color="secondary" onClick={() => { props.handleSubmit(city); setCity(''); }}>Add</Button>
             </Grid>
+            <Grid xs={2}>
         </Grid>
+        </Grid>
+       
     )
 }
+
+
 
