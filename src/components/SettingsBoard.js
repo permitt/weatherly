@@ -1,5 +1,5 @@
 import React from 'react'
-import { TEMP, HUMID, PRESS, ONE_DAY, TWO_DAYS, THREE_DAYS, FOUR_DAYS, FIVE_DAYS } from '../services/constants';
+import { TEMP, HUMID, PRESS, ONE_DAY, TWO_DAYS, THREE_DAYS, FOUR_DAYS, FIVE_DAYS, THREE_HOURS, TWELVE_HOURS } from '../services/constants';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
@@ -13,14 +13,11 @@ export default function SettingsBoard(props) {
             <Grid xs={2}>
             </Grid>
             <Grid xs={5} style={{ paddingBottom: 15 }}>
-                <Typography>Choose the unit for graph display: </Typography>
+                <Typography>Choose the unit for the chart to display: </Typography>
             </Grid>
             <Grid xs={3}>
                 <Select
-
-                    labelId="graph-unit-change"
                     style={{ width: 130 }}
-                    id="demo-simple-select"
                     value={props.chartUnit}
                     onChange={(e) => props.handleChartUnitChange(e.target.value)}
                 >
@@ -37,18 +34,16 @@ export default function SettingsBoard(props) {
             </Grid>
 
             <Grid xs={5}>
-
                 <Typography>Weather data for the next: </Typography>
             </Grid>
             <Grid xs={3}>
                 <Select
-                    labelId="graph-unit-change"
-
                     style={{ width: 130 }}
-                    id="demo-simple-select2"
                     value={props.interval}
                     onChange={(e) => props.handleIntervalChange(e.target.value)}
                 >
+                    <MenuItem value={THREE_HOURS}>{THREE_HOURS}</MenuItem>
+                    <MenuItem value={TWELVE_HOURS}>{TWELVE_HOURS}</MenuItem>
                     <MenuItem value={ONE_DAY}>{ONE_DAY}</MenuItem>
                     <MenuItem value={TWO_DAYS}>{TWO_DAYS} </MenuItem>
                     <MenuItem value={THREE_DAYS}>{THREE_DAYS}</MenuItem>

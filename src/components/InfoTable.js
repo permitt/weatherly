@@ -36,6 +36,7 @@ const ExpandableTableRow = ({ children, expandComponent, ...otherProps }) => {
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+
   },
 });
 
@@ -44,7 +45,7 @@ export function InfoTable(props) {
 
   return (
 
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ marginBottom: 50 }}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -54,8 +55,8 @@ export function InfoTable(props) {
             <TableCell align="right">Lowest °C</TableCell>
             <TableCell align="right">Highest °C</TableCell>
             <TableCell align="right">Current °C</TableCell>
-            <TableCell align="right">Pressure</TableCell>
-            <TableCell align="right">Humidity</TableCell>
+            <TableCell align="right">Pressure hPa</TableCell>
+            <TableCell align="right">Humidity %</TableCell>
             <TableCell algin="right"></TableCell>
           </TableRow>
         </TableHead>

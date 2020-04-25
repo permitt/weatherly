@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import MessageHandler from "./components/MessageHandler";
 import { TEMP, ONE_DAY } from './services/constants';
-import { filterCities, normalizeCityName, cityAlreadyAdded } from './services/helpers';
+import { filterCities, normalizeCityName, cityAlreadyAdded, dataForChart } from './services/utils';
 import { SearchBar } from './components/SearchBar';
 import { InfoTable } from './components/InfoTable';
-import { LineChart } from './components/LineChart';
 import { fetchCities } from './services/api';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import SettingsBoard from './components/SettingsBoard';
+import { LineChart, PieChart } from 'react-chartkick'
+import Link from '@material-ui/core/Link';
+import 'chart.js'
 
 
 function App() {
@@ -27,11 +30,7 @@ function App() {
       return;
     }
 
-    // API CALL, provjera, i onda dodaes u allCities kao objekat ili vracas error.
-
     const response = await fetchCities(newCity);
-    console.log(response);
-
     if (response.status != 200) {
       setMessage({ type: 'error', active: true, msg: response.message[0].toUpperCase() + response.message.substring(1) + '.' })
       return;
@@ -68,10 +67,14 @@ function App() {
         <InfoTable data={filterCities(allCities, interval)} handleRemoveCity={removeCity} />
       </Grid>
       <Grid md={12}>
-        <LineChart />
+        <LineChart xtitle="time" ytitle={chartUnit} data={dataForChart(allCities, interval, chartUnit)} />
       </Grid>
+      <Typography style={{ textAlign: 'center', paddingTop: 50 }}>
+        &copy; {new Date().getFullYear()}.
+         <Link color='secondary' href='http://github.com/permitt'>Weatherly</Link>
+      </Typography>
       <MessageHandler message={message} handleClose={closeMessage} />
-    </Container>
+    </Container >
 
   );
 }

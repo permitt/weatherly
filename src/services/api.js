@@ -6,8 +6,8 @@ const getUrl = (cityName) => `http://api.openweathermap.org/data/2.5/forecast?q=
 export const fetchCities = async (city) => {
     const url = getUrl(city);
 
-    const res = axios.get(url)
+    return axios.get(url)
         .then(res => (res))
         .catch(err => ({ status: err.response.data.code, message: err.response.data.message }));
-    return res;
+
 };
