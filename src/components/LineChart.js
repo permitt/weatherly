@@ -1,12 +1,14 @@
 import React from 'react';
 import { Chart } from 'react-charts'
 
-function MyChart() {
+
+
+export function LineChart() {
     const data = React.useMemo(
         () => [
             {
                 label: 'Series 1',
-                data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+                data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7], [5, 7], [6, 9], [7, 5], [8, 5]]
             },
             {
                 label: 'Series 2',
@@ -24,25 +26,18 @@ function MyChart() {
         []
     )
 
-    const lineChart = (
-        // A react-chart hyper-responsively and continuusly fills the available
-        // space of its parent element automatically
+
+
+    return (
         <div
             style={{
                 width: '400px',
-                height: '300px'
+                height: '300px',
+                paddingTop: 50,
+                margin: '0 auto'
             }}
         >
             <Chart data={data} axes={axes} />
-        </div>
-    )
-}
-
-
-export function LineChart() {
-    return (
-        <div>
-
         </div>
     )
 }
